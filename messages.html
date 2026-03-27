@@ -7,28 +7,14 @@
 
 <body>
 
-<header>
-<div class="logo">GlobalDealHub</div>
+<h1>💬 Business Messaging</h1>
 
-<nav>
-<a href="dashboard.html">Dashboard</a>
-<a href="companies.html">Companies</a>
-<a href="#" onclick="logout()">Logout</a>
-</nav>
-</header>
+<div class="chat-container">
 
-<div class="dashboard">
+<input type="text" id="messageInput" placeholder="Type your message...">
+<button onclick="sendMessage()">Send</button>
 
-<h2>Business Messaging</h2>
-
-<input type="text" id="receiver" placeholder="Send message to (Company or Person)">
-<input type="text" id="messageText" placeholder="Write your message">
-
-<button onclick="sendMessage()">Send Message</button>
-
-<h3 style="margin-top:40px;">Messages</h3>
-
-<div id="messagesContainer"></div>
+<div id="chatBox"></div>
 
 </div>
 
