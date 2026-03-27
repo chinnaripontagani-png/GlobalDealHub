@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Messages - GlobalDealHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<div class="logo">GlobalDealHub</div>
+
+<nav>
+<a href="dashboard.html">Dashboard</a>
+<a href="companies.html">Companies</a>
+<a href="#" onclick="logout()">Logout</a>
+</nav>
+</header>
+
+<div class="dashboard">
+
+<h2>Business Messaging</h2>
+
+<input type="text" id="receiver" placeholder="Send message to (Company or Person)">
+<input type="text" id="messageText" placeholder="Write your message">
+
+<button onclick="sendMessage()">Send Message</button>
+
+<h3 style="margin-top:40px;">Messages</h3>
+
+<div id="messagesContainer"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

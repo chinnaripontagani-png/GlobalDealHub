@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Business Profile - GlobalDealHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<div class="logo">GlobalDealHub</div>
+
+<nav>
+<a href="dashboard.html">Dashboard</a>
+<a href="#" onclick="logout()">Logout</a>
+</nav>
+</header>
+
+<div class="dashboard">
+
+<h2>Your Business Profile</h2>
+
+<input type="text" id="companyName" placeholder="Company Name">
+<input type="text" id="industry" placeholder="Industry">
+<input type="text" id="country" placeholder="Country">
+<input type="text" id="funding" placeholder="Funding Needed">
+<input type="text" id="ceoName" placeholder="CEO Name">
+
+<button onclick="saveProfile()">Save Profile</button>
+
+<h3 style="margin-top:40px;">Saved Profile</h3>
+
+<div id="profileDisplay"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

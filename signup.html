@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Signup - GlobalDealHub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<div class="logo">GlobalDealHub</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="login.html">Login</a>
+</nav>
+</header>
+
+<div class="form-container">
+<h2>Create Account</h2>
+
+<input type="text" id="name" placeholder="Full Name">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Password">
+
+<select id="role">
+<option value="">Select Role</option>
+<option>Business Owner</option>
+<option>Investor</option>
+<option>Dealer</option>
+<option>CEO / Founder</option>
+</select>
+
+<button onclick="signup()">Signup</button>
+
+<p style="text-align:center;margin-top:10px;">
+Already have an account? <a href="login.html">Login</a>
+</p>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
