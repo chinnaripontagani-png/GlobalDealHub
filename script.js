@@ -1,134 +1,19 @@
-// GlobalDealHub Full System (Fixed Version)
-
-let users = JSON.parse(localStorage.getItem("users")) || [];
-let companies = JSON.parse(localStorage.getItem("companies")) || [];
-
-/* ======================
-   SIGNUP
-====================== */
-function signup() {
-    const username = document.getElementById("signupUsername").value;
-    const password = document.getElementById("signupPassword").value;
-
-    if (!username || !password) {
-        alert("Please fill all fields");
-        return;
-    }
-
-    const user = { username, password };
-
-    users.push(user);
-    localStorage.setItem("users", JSON.stringify(users));
-
-    alert("Account created successfully!");
-    window.location.href = "login.html";
-}
-
-/* ======================
-   LOGIN
-====================== */
-function login() {
-    const username = document.getElementById("loginUsername").value;
-    const password = document.getElementById("loginPassword").value;
-
-    const foundUser = users.find(user =>
-        user.username === username && user.password === password
-    );
-
-    if (foundUser) {
-        localStorage.setItem("loggedInUser", username);
-        alert("Login successful 🚀");
-        window.location.href = "dashboard.html";
-    } else {
-        alert("Invalid username or password");
-    }
-}
-
-/* ======================
-   DASHBOARD
-====================== */
-function loadDashboard() {
-    const user = localStorage.getItem("loggedInUser");
-
-    if (!user) return;
-
-    const welcome = document.getElementById("welcomeUser");
-    if (welcome) {
-        welcome.innerText = "Welcome " + user;
-    }
-}
-
-/* ======================
-   COMPANY SYSTEM
-====================== */
-function addCompany() {
-    const name = document.getElementById("companyName").value;
-    const industry = document.getElementById("industry").value;
-    const country = document.getElementById("country").value;
-    const funding = document.getElementById("funding").value;
-
-    const company = { name, industry, country, funding };
-
-    companies.push(company);
-    localStorage.setItem("companies", JSON.stringify(companies));
-
-    alert("Company added 🌍");
-    displayCompanies();
-}
-
-function displayCompanies() {
-    const container = document.getElementById("companyList");
-    if (!container) return;
-
-    container.innerHTML = "";
-
-    companies.forEach(company => {
-        const card = document.createElement("div");
-        card.innerHTML = `
-            <h3>${company.name}</h3>
-            <p>Industry: ${company.industry}</p>
-            <p>Country: ${company.country}</p>
-            <p>Funding: ${company.funding}</p>
-            <hr>
-        `;
-        container.appendChild(card);
-    });
-}
-
 function searchCompanies() {
-    const search = document.getElementById("search").value.toLowerCase();
-    const container = document.getElementById("companyList");
+let input = document.getElementById("searchBox").value.toLowerCase();
+let cards = document.getElementsByClassName("company-card");
 
-    if (!container) return;
+for (let i = 0; i < cards.length; i++) {
+let title = cards[i].getElementsByTagName("h3")[0];
+let textValue = title.textContent || title.innerText;
 
-    container.innerHTML = "";
-
-    const filtered = companies.filter(company =>
-        company.name.toLowerCase().includes(search) ||
-        company.industry.toLowerCase().includes(search) ||
-        company.country.toLowerCase().includes(search)
-    );
-
-    filtered.forEach(company => {
-        const card = document.createElement("div");
-        card.innerHTML = `
-            <h3>${company.name}</h3>
-            <p>Industry: ${company.industry}</p>
-            <p>Country: ${company.country}</p>
-            <p>Funding: ${company.funding}</p>
-            <hr>
-        `;
-        container.appendChild(card);
-    });
+if (textValue.toLowerCase().indexOf(input) > -1) {
+cards[i].style.display = "";
+} else {
+cards[i].style.display = "none";
+}
+}
 }
 
-/* Run only when dashboard exists */
-document.addEventListener("DOMContentLoaded", function () {
-    if (document.getElementById("welcomeUser")) {
-        loadDashboard();
-    }
-
-    if (document.getElementById("companyList")) {
-        displayCompanies();
-    }
-});
+function connectCompany(name) {
+alert("Connection request sent to " + name);
+}
