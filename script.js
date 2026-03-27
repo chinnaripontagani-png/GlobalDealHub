@@ -1,22 +1,15 @@
-function searchCompanies() {
-let input = document.getElementById("searchBox").value.toLowerCase();
-let cards = document.getElementsByClassName("company-card");
+function sendMessage() {
+let input = document.getElementById("messageInput");
+let chatBox = document.getElementById("chatBox");
 
-for (let i = 0; i < cards.length; i++) {
-let title = cards[i].getElementsByTagName("h3")[0];
-let textValue = title.textContent || title.innerText;
+let message = input.value;
 
-if (textValue.toLowerCase().indexOf(input) > -1) {
-cards[i].style.display = "";
-} else {
-cards[i].style.display = "none";
-}
-}
-}
+if(message.trim() === "") return;
 
-function connectCompany(name) {
-alert("Connection request sent to " + name);
-}
-function connectUser(name) {
-alert("Connection request sent to " + name);
+let msg = document.createElement("p");
+msg.textContent = "You: " + message;
+
+chatBox.appendChild(msg);
+
+input.value = "";
 }
