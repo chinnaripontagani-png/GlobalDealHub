@@ -1,42 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>GlobalDealHub - Companies</title>
+<title>Companies - GlobalDealHub</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>🌍 Global Company Discovery</h1>
+<h1>🌍 Discover Companies</h1>
 
-<h2>Add Your Company</h2>
+<input type="text" id="searchBox" placeholder="Search companies..." onkeyup="searchCompanies()">
 
-<input id="companyName" placeholder="Company Name">
-<br><br>
+<div class="companies-container" id="companiesList">
 
-<input id="industry" placeholder="Industry (AI, Fintech, Healthcare)">
-<br><br>
+<div class="company-card">
+<h3>Microsoft</h3>
+<p>Technology Company</p>
+<button onclick="connectCompany('Microsoft')">Connect</button>
+</div>
 
-<input id="country" placeholder="Country">
-<br><br>
+<div class="company-card">
+<h3>Google</h3>
+<p>AI & Search Engine</p>
+<button onclick="connectCompany('Google')">Connect</button>
+</div>
 
-<input id="funding" placeholder="Funding Needed ($)">
-<br><br>
+<div class="company-card">
+<h3>Amazon</h3>
+<p>E-commerce Platform</p>
+<button onclick="connectCompany('Amazon')">Connect</button>
+</div>
 
-<button onclick="addCompany()">Add Company</button>
+<div class="company-card">
+<h3>Tesla</h3>
+<p>Electric Vehicles</p>
+<button onclick="connectCompany('Tesla')">Connect</button>
+</div>
 
-<hr>
+<div class="company-card">
+<h3>Apple</h3>
+<p>Consumer Technology</p>
+<button onclick="connectCompany('Apple')">Connect</button>
+</div>
 
-<h2>Search Companies</h2>
-
-<input id="search" placeholder="Search company, industry, country">
-<button onclick="searchCompanies()">Search</button>
-
-<hr>
-
-<h2>Companies on GlobalDealHub</h2>
-
-<div id="companyList"></div>
+</div>
 
 <script src="script.js"></script>
 
