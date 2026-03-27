@@ -17,3 +17,6 @@ cards[i].style.display = "none";
 function connectCompany(name) {
 alert("Connection request sent to " + name);
 }
+function connectUser(name) {
+alert("Connection request sent to " + name);
+}
