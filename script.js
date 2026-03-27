@@ -1,10 +1,10 @@
-// GlobalDealHub Full System
+// GlobalDealHub Full System (Fixed Version)
 
 let users = JSON.parse(localStorage.getItem("users")) || [];
 let companies = JSON.parse(localStorage.getItem("companies")) || [];
 
 /* ======================
-   SIGNUP SYSTEM
+   SIGNUP
 ====================== */
 function signup() {
     const username = document.getElementById("signupUsername").value;
@@ -15,10 +15,7 @@ function signup() {
         return;
     }
 
-    const user = {
-        username,
-        password
-    };
+    const user = { username, password };
 
     users.push(user);
     localStorage.setItem("users", JSON.stringify(users));
@@ -28,7 +25,7 @@ function signup() {
 }
 
 /* ======================
-   LOGIN SYSTEM
+   LOGIN
 ====================== */
 function login() {
     const username = document.getElementById("loginUsername").value;
@@ -53,10 +50,7 @@ function login() {
 function loadDashboard() {
     const user = localStorage.getItem("loggedInUser");
 
-    if (!user) {
-        window.location.href = "login.html";
-        return;
-    }
+    if (!user) return;
 
     const welcome = document.getElementById("welcomeUser");
     if (welcome) {
@@ -78,7 +72,7 @@ function addCompany() {
     companies.push(company);
     localStorage.setItem("companies", JSON.stringify(companies));
 
-    alert("Company added to GlobalDealHub 🌍");
+    alert("Company added 🌍");
     displayCompanies();
 }
 
@@ -105,6 +99,8 @@ function searchCompanies() {
     const search = document.getElementById("search").value.toLowerCase();
     const container = document.getElementById("companyList");
 
+    if (!container) return;
+
     container.innerHTML = "";
 
     const filtered = companies.filter(company =>
@@ -126,7 +122,13 @@ function searchCompanies() {
     });
 }
 
-window.onload = function () {
-    displayCompanies();
-    loadDashboard();
-};
+/* Run only when dashboard exists */
+document.addEventListener("DOMContentLoaded", function () {
+    if (document.getElementById("welcomeUser")) {
+        loadDashboard();
+    }
+
+    if (document.getElementById("companyList")) {
+        displayCompanies();
+    }
+});
