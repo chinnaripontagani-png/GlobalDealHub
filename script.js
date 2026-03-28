@@ -1,50 +1,63 @@
-function goSignup() {
+function startNetworking(){
 window.location.href = "signup.html";
 }
 
-function goLogin() {
+function openLogin(){
 window.location.href = "login.html";
 }
 
-function goCompanies() {
+function openCompanies(){
 window.location.href = "companies.html";
 }
 
-function createAccount() {
-let username = document.getElementById("username").value;
-let password = document.getElementById("password").value;
+function createAccount(){
+let user = document.getElementById("username").value;
+let pass = document.getElementById("password").value;
 
-localStorage.setItem("username", username);
-localStorage.setItem("password", password);
+localStorage.setItem("gdh_user", user);
+localStorage.setItem("gdh_pass", pass);
 
 alert("Account created successfully!");
 window.location.href = "login.html";
 }
 
-function login() {
-let username = document.getElementById("loginUser").value;
-let password = document.getElementById("loginPass").value;
+function login(){
+let user = document.getElementById("loginUser").value;
+let pass = document.getElementById("loginPass").value;
 
-let storedUser = localStorage.getItem("username");
-let storedPass = localStorage.getItem("password");
+let savedUser = localStorage.getItem("gdh_user");
+let savedPass = localStorage.getItem("gdh_pass");
 
-if(username === storedUser && password === storedPass) {
+if(user === savedUser && pass === savedPass){
 alert("Login successful!");
 window.location.href = "dashboard.html";
-} else {
-alert("Wrong username or password");
+}
+else{
+alert("Wrong login details");
 }
 }
 
-function openCompanies() {
-window.location.href = "companies.html";
-}
-
-function openMessages() {
+function goMessages(){
 window.location.href = "messages.html";
 }
 
-function logout() {
-alert("Logged out");
+function goNetwork(){
+window.location.href = "network.html";
+}
+
+function logout(){
 window.location.href = "index.html";
+}
+
+function sendMessage(){
+let msgInput = document.getElementById("messageInput");
+let chat = document.getElementById("chatBox");
+
+if(msgInput.value.trim() === "") return;
+
+let p = document.createElement("p");
+p.innerText = "You: " + msgInput.value;
+
+chat.appendChild(p);
+msgInput.value = "";
 }
