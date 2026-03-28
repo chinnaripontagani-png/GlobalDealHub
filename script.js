@@ -1,15 +1,50 @@
-function sendMessage() {
-let input = document.getElementById("messageInput");
-let chatBox = document.getElementById("chatBox");
+function goSignup() {
+window.location.href = "signup.html";
+}
 
-let message = input.value;
+function goLogin() {
+window.location.href = "login.html";
+}
 
-if(message.trim() === "") return;
+function goCompanies() {
+window.location.href = "companies.html";
+}
 
-let msg = document.createElement("p");
-msg.textContent = "You: " + message;
+function createAccount() {
+let username = document.getElementById("username").value;
+let password = document.getElementById("password").value;
 
-chatBox.appendChild(msg);
+localStorage.setItem("username", username);
+localStorage.setItem("password", password);
 
-input.value = "";
+alert("Account created successfully!");
+window.location.href = "login.html";
+}
+
+function login() {
+let username = document.getElementById("loginUser").value;
+let password = document.getElementById("loginPass").value;
+
+let storedUser = localStorage.getItem("username");
+let storedPass = localStorage.getItem("password");
+
+if(username === storedUser && password === storedPass) {
+alert("Login successful!");
+window.location.href = "dashboard.html";
+} else {
+alert("Wrong username or password");
+}
+}
+
+function openCompanies() {
+window.location.href = "companies.html";
+}
+
+function openMessages() {
+window.location.href = "messages.html";
+}
+
+function logout() {
+alert("Logged out");
+window.location.href = "index.html";
 }
