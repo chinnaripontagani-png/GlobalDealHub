@@ -1,54 +1,85 @@
-function startNetworking(){
-window.location.href="signup.html";
+// Navigate to signup page
+function startNetworking() {
+    window.location.href = "signup.html";
 }
 
-function openLogin(){
-window.location.href="login.html";
+// Navigate to login page
+function openLogin() {
+    window.location.href = "login.html";
 }
 
-function openCompanies(){
-window.location.href="companies.html";
+// Open companies page
+function openCompanies() {
+    window.location.href = "companies.html";
 }
 
-function createAccount(){
-let u=document.getElementById("username").value;
-let p=document.getElementById("password").value;
-
-localStorage.setItem("user",u);
-localStorage.setItem("pass",p);
-
-alert("Account created!");
-window.location.href="login.html";
+// Open networking page
+function goNetwork() {
+    window.location.href = "network.html";
 }
 
-function login(){
-let u=document.getElementById("loginUser").value;
-let p=document.getElementById("loginPass").value;
-
-let su=localStorage.getItem("user");
-let sp=localStorage.getItem("pass");
-
-if(u===su && p===sp){
-window.location.href="dashboard.html";
-}
-else{
-alert("Wrong details");
-}
+// Open messages page
+function goMessages() {
+    window.location.href = "messages.html";
 }
 
-function connectCompany(name){
-alert("Connection request sent to "+name);
+// Create account
+function createAccount() {
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    if (username === "" || password === "") {
+        alert("Please enter username and password");
+        return;
+    }
+
+    localStorage.setItem("gdh_user", username);
+    localStorage.setItem("gdh_pass", password);
+
+    alert("Account created successfully!");
+    window.location.href = "login.html";
 }
 
-function sendMessage(){
-let input=document.getElementById("messageInput");
-let chat=document.getElementById("chatBox");
+// Login system
+function login() {
+    let username = document.getElementById("loginUser").value;
+    let password = document.getElementById("loginPass").value;
 
-if(input.value==="") return;
+    let savedUser = localStorage.getItem("gdh_user");
+    let savedPass = localStorage.getItem("gdh_pass");
 
-let msg=document.createElement("p");
-msg.innerText="You: "+input.value;
+    if (username === savedUser && password === savedPass) {
+        alert("Login successful!");
+        window.location.href = "dashboard.html";
+    } else {
+        alert("Incorrect username or password");
+    }
+}
 
-chat.appendChild(msg);
-input.value="";
+// Connect to company
+function connectCompany(companyName) {
+    alert("Connection request sent to " + companyName);
+}
+
+// Send message
+function sendMessage() {
+    let messageInput = document.getElementById("messageInput");
+    let chatBox = document.getElementById("chatBox");
+
+    let message = messageInput.value.trim();
+
+    if (message === "") return;
+
+    let msg = document.createElement("p");
+    msg.innerText = "You: " + message;
+
+    chatBox.appendChild(msg);
+
+    messageInput.value = "";
+}
+
+// Logout
+function logout() {
+    alert("Logged out successfully");
+    window.location.href = "index.html";
 }
