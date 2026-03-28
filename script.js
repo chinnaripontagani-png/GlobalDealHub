@@ -1,63 +1,54 @@
 function startNetworking(){
-window.location.href = "signup.html";
+window.location.href="signup.html";
 }
 
 function openLogin(){
-window.location.href = "login.html";
+window.location.href="login.html";
 }
 
 function openCompanies(){
-window.location.href = "companies.html";
+window.location.href="companies.html";
 }
 
 function createAccount(){
-let user = document.getElementById("username").value;
-let pass = document.getElementById("password").value;
+let u=document.getElementById("username").value;
+let p=document.getElementById("password").value;
 
-localStorage.setItem("gdh_user", user);
-localStorage.setItem("gdh_pass", pass);
+localStorage.setItem("user",u);
+localStorage.setItem("pass",p);
 
-alert("Account created successfully!");
-window.location.href = "login.html";
+alert("Account created!");
+window.location.href="login.html";
 }
 
 function login(){
-let user = document.getElementById("loginUser").value;
-let pass = document.getElementById("loginPass").value;
+let u=document.getElementById("loginUser").value;
+let p=document.getElementById("loginPass").value;
 
-let savedUser = localStorage.getItem("gdh_user");
-let savedPass = localStorage.getItem("gdh_pass");
+let su=localStorage.getItem("user");
+let sp=localStorage.getItem("pass");
 
-if(user === savedUser && pass === savedPass){
-alert("Login successful!");
-window.location.href = "dashboard.html";
+if(u===su && p===sp){
+window.location.href="dashboard.html";
 }
 else{
-alert("Wrong login details");
+alert("Wrong details");
 }
 }
 
-function goMessages(){
-window.location.href = "messages.html";
-}
-
-function goNetwork(){
-window.location.href = "network.html";
-}
-
-function logout(){
-window.location.href = "index.html";
+function connectCompany(name){
+alert("Connection request sent to "+name);
 }
 
 function sendMessage(){
-let msgInput = document.getElementById("messageInput");
-let chat = document.getElementById("chatBox");
+let input=document.getElementById("messageInput");
+let chat=document.getElementById("chatBox");
 
-if(msgInput.value.trim() === "") return;
+if(input.value==="") return;
 
-let p = document.createElement("p");
-p.innerText = "You: " + msgInput.value;
+let msg=document.createElement("p");
+msg.innerText="You: "+input.value;
 
-chat.appendChild(p);
-msgInput.value = "";
+chat.appendChild(msg);
+input.value="";
 }
