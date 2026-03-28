@@ -7,52 +7,13 @@
 
 <body>
 
-<header>
-<div class="logo">GlobalDealHub</div>
+<h1>Welcome to GlobalDealHub Dashboard</h1>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="profile.html">Business Profile</a>
-<a href="companies.html">Companies</a>
-<a href="messages.html">Messages</a>
-<a href="network.html">Network</a>
-<a href="#" onclick="logout()">Logout</a>
-</nav>
-</header>
-
-<div class="dashboard">
-
-<h2 id="welcomeText"></h2>
-
-<a class="btn" href="profile.html">Create / View Business Profile</a>
-
-<h3 style="margin-top:40px;">Post a Business Deal</h3>
-
-<input type="text" id="dealTitle" placeholder="Deal Title">
-<input type="text" id="dealCompany" placeholder="Company Name">
-<input type="text" id="dealAmount" placeholder="Investment Needed">
-
-<button onclick="postDeal()">Post Deal</button>
-
-<h3 style="margin-top:40px;">Live Deals</h3>
-
-<div id="dealsContainer"></div>
-
-</div>
+<button onclick="openCompanies()">Discover Companies</button>
+<button onclick="openMessages()">Messages</button>
+<button onclick="logout()">Logout</button>
 
 <script src="script.js"></script>
-
-<script>
-
-let userEmail = localStorage.getItem("loggedInUser");
-
-if(userEmail){
-let user = JSON.parse(localStorage.getItem(userEmail));
-document.getElementById("welcomeText").innerText =
-"Welcome " + user.name + " (" + user.role + ")";
-}
-
-</script>
 
 </body>
 </html>
